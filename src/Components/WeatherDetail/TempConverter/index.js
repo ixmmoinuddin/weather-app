@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 import {
   Col,
@@ -11,7 +11,6 @@ import {
   CardTitle,
   FormGroup,
 } from "reactstrap";
-import "../../Assets/css/custome.css";
 
 function TempConverter() {
   const [temp, updateTemp] = React.useState({ c: 0, f: 32 });

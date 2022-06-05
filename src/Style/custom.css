@@ -4,6 +4,9 @@
   border-color: #dee2e6 !important;
 }
 
+.forecastmapping .card .card-body {
+  height: 195px;
+}
 
 .forecastmapping .nav-item a {
   color: #000000 !important;

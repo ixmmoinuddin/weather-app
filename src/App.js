@@ -9,6 +9,9 @@ import getCoordinatesOfAddress from "./api/forwardGeocoding";
 import getAddressOfCoordinates from "./api/reverseGeocoding";
 import getWeatherAndForecast from "./api/weatherAndForecast";
 
+
+import './Style/custom.css'
+
 function App() {
   const [coordinates, setCoordinates] = useState({});
   const [address, setAddress] = useState("Islamabad");
@@ -106,7 +109,7 @@ function App() {
   return (
     <div className="App">
       <SiteTitle />
-      <Search searchCity={searchCity}/>
+      <Search searchCity={searchCity} />
       {Main[contentState]()}
     </div>
   );

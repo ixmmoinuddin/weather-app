@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+
 import {
   Row,
   Col,
@@ -10,11 +11,9 @@ import {
   NavLink,
   CardBody,
   CardText,
-  CardTitle,
   TabContent,
 } from "reactstrap";
 import classnames from "classnames";
-import "../../Assets/css/custome.css";
 
 function ForecastMapping() {
   const [currentActiveTab, setCurrentActiveTab] = useState("1");
@@ -69,12 +68,7 @@ function ForecastMapping() {
             <Col>
               <Card>
                 <CardBody>
-                  <CardTitle tag="h5">Weekly Forecast for: 1</CardTitle>
-                  <hr />
-                  <CardText>Current Tempreture: </CardText>
-                  <CardText>Weather Conditions: </CardText>
-                  <CardText>Highest Tempreture: </CardText>
-                  <CardText>Lowest Tempreture: </CardText>
+                  <CardText>Clouds Mapping</CardText>
                 </CardBody>
               </Card>
             </Col>
@@ -85,12 +79,7 @@ function ForecastMapping() {
             <Col>
               <Card>
                 <CardBody>
-                  <CardTitle tag="h5">Weekly Forecast for: 2</CardTitle>
-                  <hr />
-                  <CardText>Current Tempreture: </CardText>
-                  <CardText>Weather Conditions: </CardText>
-                  <CardText>Highest Tempreture: </CardText>
-                  <CardText>Lowest Tempreture: </CardText>
+                  <CardText>Precipitation Mapping</CardText>
                 </CardBody>
               </Card>
             </Col>
@@ -101,12 +90,7 @@ function ForecastMapping() {
             <Col sm="12">
               <Card>
                 <CardBody>
-                  <CardTitle tag="h5">Weekly Forecast for: 3</CardTitle>
-                  <hr />
-                  <CardText>Current Tempreture: </CardText>
-                  <CardText>Weather Conditions: </CardText>
-                  <CardText>Highest Tempreture: </CardText>
-                  <CardText>Lowest Tempreture: </CardText>
+                  <CardText>Tempreture Mapping</CardText>
                 </CardBody>
               </Card>
             </Col>

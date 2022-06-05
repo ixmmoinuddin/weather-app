@@ -6,10 +6,8 @@ import "slick-carousel/slick/slick-theme.css";
 
 import { Card, CardBody, CardText, CardTitle } from "reactstrap";
 
-import "../../Assets/css/custome.css";
-
 function WeeklyForecast(props) {
-  const { date, weatherInfo } = props;
+  const { days, weatherInfo } = props;
 
   const settings = {
     dots: true,
@@ -38,6 +36,11 @@ function WeeklyForecast(props) {
     ],
   };
 
+  const dayName = weatherInfo.daily.map((item, id) => {
+    const dayNum = new Date(item.dt * 1000).getDay();
+    return days[dayNum];
+  });
+
   return (
     <div className="mb-5">
       <Slider {...settings}>
@@ -46,7 +49,10 @@ function WeeklyForecast(props) {
             return (
               <Card key={id} className="border-0">
                 <CardBody className="border rounded text-center mx-2">
-                  <CardTitle tag="h5">{date[id]}</CardTitle>
+                  <CardTitle tag="h5">{dayName[id]}</CardTitle>
+                  <CardText  className="m-0">
+                    {new Date(item.dt * 1000).toLocaleDateString("en-US")}
+                  </CardText>
                   <img
                     className="d-inline-block"
                     src={
@@ -56,9 +62,10 @@ function WeeklyForecast(props) {
                     }
                     alt={weatherInfo.daily[id].weather[0].main}
                   />
-                  <CardText>
-                    {new Date(item.dt * 1000).toLocaleDateString("en-US")}
+                  <CardText  className="m-0">
+                    {weatherInfo.daily[id].weather[0].description}
                   </CardText>
+                  
                   <CardText>
                     <strong>
                       <span className="text-danger">

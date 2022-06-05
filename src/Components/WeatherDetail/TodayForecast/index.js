@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 
 import { Card, CardBody, CardText, CardTitle, Collapse } from "reactstrap";
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
-import "../../Assets/css/custome.css";
 
 function TodayForecast(props) {
-  const { date, location, weatherInfo } = props;
+  const { days, location, weatherInfo } = props;
   const [toggleQuestion, setToggequestion] = useState(false);
 
+  const dayNum = new Date(weatherInfo.current.dt * 1000).getDay();
+  const dayName = days[dayNum];
 
-  console.log("weatherInfo", weatherInfo);
-
+  console.log('weatherInfo', weatherInfo)
 
   return (
     <div className="d-flex flex-lg-row flex-md-row flex-column border border-1 rounded p-2">
@@ -154,7 +153,14 @@ function TodayForecast(props) {
           height={120}
           alt={weatherInfo.current.weather[0].main || "--"}
         />
-        <h6>{date}</h6>
+        <h3 className="text-center">
+          {Math.round(weatherInfo.current.temp) || "--"}
+          <sup>°C</sup>
+        </h3>
+        <h6>{dayName}</h6>
+        <h6>
+          {new Date(weatherInfo.current.dt * 1000).toLocaleDateString("en-US")}
+        </h6>
         <h6>
           {location.city || "--"}, {location.country || "--"}
         </h6>

@@ -1,7 +1,6 @@
 import React from "react";
 
 import {Container, Row, Col} from 'reactstrap';
-import './Assets/css/custome.css'
 
 function SiteTitle() {
   return (

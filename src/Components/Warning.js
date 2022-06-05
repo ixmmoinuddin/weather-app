@@ -1,5 +1,4 @@
 import React from "react";
-import "./Assets/css/custome.css";
 
 function Warning() {
   return (
