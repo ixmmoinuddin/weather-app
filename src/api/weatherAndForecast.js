@@ -8,7 +8,7 @@ async function getWeatherAndForecast(coordinates) {
         lat: coordinates.lat,
         lon: coordinates.lng,
         exclude: "minutely,hourly,alerts",
-        appid: "735654d6cfc4e5d9ec9c810e34f5254a",
+        appid: `${process.env.REACT_APP_OPENWEATHERMAP_API_KEY}`,
         units: "metric"
       }
     }

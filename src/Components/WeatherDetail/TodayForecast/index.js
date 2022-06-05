@@ -11,8 +11,6 @@ function TodayForecast(props) {
   const dayNum = new Date(weatherInfo.current.dt * 1000).getDay();
   const dayName = days[dayNum];
 
-  console.log('weatherInfo', weatherInfo)
-
   return (
     <div className="d-flex flex-lg-row flex-md-row flex-column border border-1 rounded p-2">
       <div className="flex-fill order-lg-1 order-md-1 order-2 border-end">

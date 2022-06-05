@@ -106,6 +106,9 @@ function App() {
     ),
   };
 
+  console.log('Location Info: ', locationInfo);
+  console.log('weatherInfo', weatherAndForecastInfo);
+
   return (
     <div className="App">
       <SiteTitle />

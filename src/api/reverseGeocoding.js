@@ -5,7 +5,7 @@ async function getAddressOfCoordinates(lat, lng) {
     "https://api.opencagedata.com/geocode/v1/json? ",
     {
       params: {
-        key: "4966c985cc3e4b66bff61ef1aba5877a",
+        key: `${process.env.REACT_APP_OPENCAGEDATA_API_KEY}`,
         q: `${lat}+${lng}`,
         language: "en"
       }
@@ -14,5 +14,6 @@ async function getAddressOfCoordinates(lat, lng) {
 
   return response;
 }
+
 
 export default getAddressOfCoordinates;
