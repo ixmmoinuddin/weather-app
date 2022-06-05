@@ -1,25 +1,163 @@
-import React from "react";
+import React, { useState } from "react";
 
-import { Card, CardBody, CardText, CardTitle } from "reactstrap";
+import { Card, CardBody, CardText, CardTitle, Collapse } from "reactstrap";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
 import "../../Assets/css/custome.css";
 
-function TodayForecast() {
+function TodayForecast(props) {
+  const { date, location, weatherInfo } = props;
+  const [toggleQuestion, setToggequestion] = useState(false);
+
+
+  console.log("weatherInfo", weatherInfo);
+
+
   return (
-    <div className="d-flex flex-lg-row flex-md-row flex-sm-column">
-      <div className="flex-fill order-lg-1 order-md-1 order-2">
-        <Card>
+    <div className="d-flex flex-lg-row flex-md-row flex-column border border-1 rounded p-2">
+      <div className="flex-fill order-lg-1 order-md-1 order-2 border-end">
+        <Card className="border-0">
           <CardBody>
-            <CardTitle tag="h5">Today's Forecast for: </CardTitle>
+            <CardTitle tag="h5">
+              Today's Forecast for: <strong>{location.city || "--"}</strong>
+            </CardTitle>
             <hr />
-            <CardText>Current Tempreture: </CardText>
-            <CardText>Weather Conditions: </CardText>
-            <CardText>Highest Tempreture: </CardText>
-            <CardText>Lowest Tempreture: </CardText>
+            <CardText className="d-flex justify-content-between">
+              <span>Current Tempreture:</span>
+              <span>
+                <strong>
+                  {Math.round(weatherInfo.current.temp) || "--"}
+                  <sup>°C</sup>
+                </strong>
+              </span>
+            </CardText>
+            <CardText
+              className="d-flex justify-content-between align-items-center"
+              onClick={() => setToggequestion(!toggleQuestion)}
+            >
+              <span className="d-inline-block border rounded p-1 me-3">
+                <FontAwesomeIcon
+                  icon={toggleQuestion === true ? faChevronUp : faChevronDown}
+                />
+              </span>
+              <span className="flex-fill">Weather Conditions:</span>
+              <span>
+                <strong>
+                  {weatherInfo.current.weather[0].description || "--"}
+                </strong>
+              </span>
+            </CardText>
+
+            <Collapse isOpen={toggleQuestion} className="my-3">
+              <Card>
+                <CardBody>
+                  <CardText className="d-flex justify-content-between">
+                    <span>Wind Speed:</span>
+                    <span>
+                      <strong>
+                        <small>
+                          {`${weatherInfo.current.wind_speed} M/S` || "--"}
+                        </small>
+                      </strong>
+                    </span>
+                  </CardText>
+                  <hr />
+                  <CardText className="d-flex justify-content-between">
+                    <span>Humidity:</span>
+                    <span>
+                      <strong>
+                        <small>
+                          {`${weatherInfo.current.humidity} %` || "--"}
+                        </small>
+                      </strong>
+                    </span>
+                  </CardText>
+                  <hr />
+                  <CardText className="d-flex justify-content-between">
+                    <span>Pressure:</span>
+                    <span>
+                      <strong>
+                        <small>
+                          {`${weatherInfo.current.pressure} Pa` || "--"}
+                        </small>
+                      </strong>
+                    </span>
+                  </CardText>
+                  <hr />
+                  <CardText className="d-flex justify-content-between">
+                    <span>Sun Rise:</span>
+                    <span>
+                      <strong>
+                        <small>
+                          {new Date(
+                            weatherInfo.current.sunrise * 1000
+                          ).getHours() +
+                            ":" +
+                            new Date(
+                              weatherInfo.current.sunrise * 1000
+                            ).getMinutes() || "--"}
+                        </small>
+                      </strong>
+                    </span>
+                  </CardText>
+                  <hr />
+                  <CardText className="d-flex justify-content-between">
+                    <span>Sun Set:</span>
+                    <span>
+                      <strong>
+                        <small>
+                          {new Date(
+                            weatherInfo.current.sunset * 1000
+                          ).getHours() +
+                            ":" +
+                            new Date(
+                              weatherInfo.current.sunset * 1000
+                            ).getMinutes() || "--"}
+                        </small>
+                      </strong>
+                    </span>
+                  </CardText>
+                </CardBody>
+              </Card>
+            </Collapse>
+
+            <CardText className="d-flex justify-content-between">
+              <span>Highest Tempreture:</span>
+              <span>
+                <strong>
+                  {Math.round(weatherInfo.daily[0].temp.max) || "--"}
+                  <sup>°C</sup>
+                </strong>
+              </span>
+            </CardText>
+            <CardText className="d-flex justify-content-between">
+              <span>Lowest Tempreture:</span>
+              <span>
+                <strong>
+                  {Math.round(weatherInfo.daily[0].temp.min) || "--"}
+                  <sup>°C</sup>
+                </strong>
+              </span>
+            </CardText>
           </CardBody>
         </Card>
       </div>
-      <div className="d-flex order-lg-2 order-md-2 order-1">
-        <img src="https://via.placeholder.com/150" alt="" />
+      <div className="d-flex flex-column align-items-center justify-content-center order-lg-2 order-md-2 order-1">
+        <img
+          src={
+            "https://openweathermap.org/img/wn/" +
+            weatherInfo.current.weather[0].icon +
+            ".png"
+          }
+          width={120}
+          height={120}
+          alt={weatherInfo.current.weather[0].main || "--"}
+        />
+        <h6>{date}</h6>
+        <h6>
+          {location.city || "--"}, {location.country || "--"}
+        </h6>
       </div>
     </div>
   );

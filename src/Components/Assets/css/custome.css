@@ -1,32 +1,50 @@
-*:focus{
-    outline: 0;
-    box-shadow: none !important;
-    border-color: #dee2e6 !important;
+*:focus {
+  outline: 0;
+  box-shadow: none !important;
+  border-color: #dee2e6 !important;
 }
 
-.forecastmapping .nav-item a{
-    color: #000000 !important;
-    margin: 0 10px 20px 0 !important;
-    border: 1px solid rgba(0,0,0,.125) !important;
+
+.forecastmapping .nav-item a {
+  color: #000000 !important;
+  margin: 0 10px 20px 0 !important;
+  border: 1px solid rgba(0, 0, 0, 0.125) !important;
 }
 
-.forecastmapping .nav-item a.active{
-    color: red !important;
+.forecastmapping .nav-item a.active {
+  color: red !important;
 }
 
-/* Slick Slider Styling */
+/* Loader Defination */
 
-.slick-prev {
-    z-index: 999;
-    left: 25% !important;
+.Loader {
+  width: 50px;
+  height: 50px;
+  margin: 5rem auto;
+  border-radius: 50%;
+  border: 8px solid #f2f2f2;
+  border-top: 8px solid #f37928;
+  animation: spin 1.5s linear infinite;
 }
-.slick-next {
-    z-index: 999;
-    right: 25% !important;
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
-.slick-prev, .slick-next {
-    top: 106% !important;
+
+/* Warning Defination */
+
+.Warning {
+  display: flex;
+  padding: 2rem 3rem;
+  text-align: center;
+  flex-direction: column;
 }
-.slick-prev::before, .slick-next::before {
-    color: #000000 !important;
+
+.Warning > * {
+  padding: 0.15rem 0;
 }
